@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/gym-goal")
+@RequestMapping("/api")
 public class GymGoalController {
 
     private final GymGoalRepository gymGoalRepository;
@@ -24,7 +24,7 @@ public class GymGoalController {
     }
 
     // Get gym goal by ID
-    @GetMapping("/{id}")
+    @GetMapping("/gym-goal/{id}")
     public ResponseEntity<GymGoal> getGymGoalById(@PathVariable Long id) {
         Optional<GymGoal> gymGoal = gymGoalRepository.findById(id);
         return gymGoal.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
